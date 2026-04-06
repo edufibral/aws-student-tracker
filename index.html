@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AWS Student Tracker (S3 Frontend)</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <p class="badge">AWS S3 Static Frontend</p>
+      <h1>Student Tracker Admin</h1>
+      <p class="subtitle">
+        Simple static UI to test CRUD routes for students, programs/degrees, courses, grades, and more.
+      </p>
+    </header>
+
+    <main class="container">
+      <section class="card settings">
+        <h2>API Configuration</h2>
+        <p>
+          This frontend is meant to be hosted in an S3 bucket and call API Gateway/Lambda endpoints.
+          Set your API base URL once, then use CRUD panels below.
+        </p>
+        <div class="row">
+          <label for="api-base-url">API Base URL</label>
+          <input
+            id="api-base-url"
+            type="url"
+            value="https://41bkoapyp5.execute-api.us-east-2.amazonaws.com/dev/api"
+            placeholder="https://your-api.execute-api.region.amazonaws.com/dev/api"
+          />
+          <button id="save-api-base">Save Base URL</button>
+        </div>
+        <p id="config-message" class="message" aria-live="polite"></p>
+      </section>
+
+      <section class="grid" id="crud-grid"></section>
+    </main>
+
+    <template id="crud-panel-template">
+      <article class="card panel">
+        <header class="panel-head">
+          <h3 class="entity-title"></h3>
+          <code class="entity-endpoint"></code>
+        </header>
+
+        <div class="panel-actions">
+          <button data-action="list">GET List</button>
+          <button data-action="create">POST Create</button>
+          <button data-action="update" class="secondary">PUT Update</button>
+          <button data-action="delete" class="danger">DELETE</button>
+        </div>
+
+        <div class="panel-inputs">
+          <label>
+            Record ID (for update/delete)
+            <input data-field="id" type="text" placeholder="e.g. 123 or abc-123" />
+          </label>
+
+          <label>
+            JSON Payload (for create/update)
+            <textarea data-field="payload" rows="8" spellcheck="false"></textarea>
+          </label>
+        </div>
+
+        <p class="message panel-message" aria-live="polite"></p>
+
+        <label class="response-label">Response</label>
+        <pre class="response" data-field="response">No response yet.</pre>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
