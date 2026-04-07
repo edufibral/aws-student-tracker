@@ -1,27 +1,27 @@
 const ENTITIES = [
   {
-    key: "user",
-    title: "Users",
-    singular: "user",
-    endpoint: "user",
+    key: "students",
+    title: "Students",
+    singular: "student",
+    endpoint: "student",
     sample: {
       name: "Jordan Lee",
-      email: "jordan.lee@example.edu"
+      email: "jordan.lee@example.edu",
+      programId: "prog-001"
     }
   },
   {
-    key: "program",
+    key: "programs",
     title: "Programs / Degrees",
     singular: "program",
     endpoint: "program",
     sample: {
-      code: "CS-BS",
       name: "Computer Science",
       degreeType: "BS"
     }
   },
   {
-    key: "course",
+    key: "courses",
     title: "Courses",
     singular: "course",
     endpoint: "course",
@@ -32,15 +32,25 @@ const ENTITIES = [
     }
   },
   {
-    key: "grade",
+    key: "grades",
     title: "Grades",
     singular: "grade",
     endpoint: "grade",
     sample: {
       studentId: "stu-001",
-      courseCode: "CS101",
-      grade: "A",
-      userEmail: "jordan.lee@example.edu"
+      courseId: "crs-101",
+      grade: "A"
+    }
+  },
+  {
+    key: "enrollments",
+    title: "Enrollments",
+    singular: "enrollment",
+    endpoint: "enrollment",
+    sample: {
+      studentId: "stu-001",
+      courseId: "crs-101",
+      status: "active"
     }
   }
 ];
